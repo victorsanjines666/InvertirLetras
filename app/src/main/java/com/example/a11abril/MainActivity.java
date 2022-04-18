@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,8 +15,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtResultado;
     private EditText etPalabra;
     private Button btnProcesar;
+    private Button btnMensaje;
 
     private String palabra;
+    private String invertido;
 
     //metodos - funciones
 
@@ -43,13 +46,42 @@ public class MainActivity extends AppCompatActivity {
                 invertirPalabra();
             }
         });
+        btnMensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mostrarMensaje();
+            }
+        });
+    }
+
+    private void mostrarMensaje() {
+        /*
+        Para mostrar mensajes en pantalla, ustedes pueden usar
+        una ventana emergente temporal llamada Toast que basicamente
+        sirve para mostrar información al usuario acerca de ciertos
+        procesos que hayan pasado, confirmaciones, mostrar algun mensaje
+        y otros.
+         */
+        //estatico
+        /*
+        El Toast tiene un metodo llamado makeText que es donde configuraran
+        lo que quieren mostrar al usuario, para ello deben pasar estos parametros:
+         - contexto (ambito) de la pantalla donde se va a dibujar ese mensaje.
+         - cadena de caracteres: el mensaje a mostrar.
+         - una constante de duracion del mensaje en pantalla para que dure mas o menos
+         Finalmente deben decirle al Toast que se muestre con esa configuracion
+         y para ello usan el método o envento .show()
+         */
+        //ese metodo devuelve un string
+        String mensajeMostrar = evaluarPalindromo();
+        Toast.makeText(this,mensajeMostrar,Toast.LENGTH_LONG).show();
     }
 
     private void invertirPalabra() {
         //Una anera directa de inveritr una cadena
         //Netamente codigo java
         //palabra = new StringBuilder(palabra).reverse().toString();
-        String invertido = "";
+        invertido = "";
         //La idea es que traten la cadena String como si fuera un Array
         //donde cada letra esta en una posicion del array partiendo desde 0
         //para tal efecto los Strings tienen un metodo que les permite
@@ -65,11 +97,21 @@ public class MainActivity extends AppCompatActivity {
         palabra = etPalabra.getText().toString();
     }
 
+    //Evaluar palindromo
+    private String evaluarPalindromo(){
+        String mensaje = "No es palindromo";
+        if (palabra.equals(invertido)) {
+            mensaje = "Es palindromo";
+        }
+        return mensaje;
+    }
+
     private void inicializarVistas() {
         txtResultado = findViewById(R.id.txtResultado);
         etPalabra = findViewById(R.id.etPalabra);
         etPalabra = findViewById(R.id.etPalabra);
         btnProcesar = findViewById(R.id.btnProcesar);
+        btnMensaje = findViewById(R.id.btnMensaje);
     }
 
 

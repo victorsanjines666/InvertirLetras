@@ -33,9 +33,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:backgroundTint="@color/color_primario"
         android:hint="@string/btn_procesar"
         android:text="@string/btn_procesar"
         app:layout_constraintStart_toStartOf="@+id/txtResultado"
         app:layout_constraintTop_toBottomOf="@+id/txtResultado" />
+
+    <Button
+        android:id="@+id/btnMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/color_primario"
+        android:text="@string/btn_mensaje"
+        app:layout_constraintStart_toStartOf="@+id/btnProcesar"
+        app:layout_constraintTop_toBottomOf="@+id/btnProcesar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
